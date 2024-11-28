@@ -9,7 +9,7 @@
             {% set renamed_column = "`" ~ column ~ "`" ~ " AS `" ~ column ~ suffix ~ "`" %}
 
         {% elif renameMethod == 'Custom Expression' %}
-            {% set custom_expr_result = MultiModelSqlproject.evaluate_expression(customExpression | replace('column_name',  "`" ~ column ~ "`")) %}
+            {% set custom_expr_result = AlteryxDatabricks.evaluate_expression(customExpression | replace('column_name',  "`" ~ column ~ "`")) %}
             {% set custom_expr_result_trimmed = custom_expr_result | trim %}
             {{ log(custom_expr_result_trimmed, info = True) }}
             {% set renamed_column = "`" ~ column ~ "`" ~ " as " ~ "`" ~ custom_expr_result_trimmed ~ "`" %}

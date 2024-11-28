@@ -4,7 +4,7 @@
         {% if selectUsing == 'SELECT_EXPR' %}
             {# Evaluate the custom expression by substituting column name in the expression #}
             {% set expression_to_evaluate = customExpression.replace("column_name", "'" ~ column["name"] ~ "'") %}
-            {% set evaluation_result = MultiModelSqlproject.evaluate_expression(expression_to_evaluate) | trim %}
+            {% set evaluation_result = AlteryxDatabricks.evaluate_expression(expression_to_evaluate) | trim %}
 
             {# Only add column if the evaluation result is true #}
             {{ log(evaluation_result, info = True) }}
